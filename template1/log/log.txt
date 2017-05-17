@@ -1,0 +1,25 @@
+
+'D:\template\template1\log\baidu1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\baidu2.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\baidu2.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\test_baidu1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\baidu2.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\test_baidu1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\baidu2.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\test_baidu1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\widget1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\baidu2.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\test_baidu1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'D:\template\template1\log\widget1.py' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
