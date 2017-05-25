@@ -7,7 +7,7 @@ mysql_info = {"host": '127.0.0.1',
               "port": 3307,
               "user": 'root',
               "passwd": 'test',
-              "db": 'mysql',
+              "db": 'test',
               "charset": 'utf8'}
 
 class MysqlUtil():
@@ -92,10 +92,22 @@ class MysqlUtil():
 if __name__ == "__main__":
     A = MysqlUtil()
     # sql = "SELECT  *FROM notify_request t where TEMPLATE_ID LIKE '16091%' ORDER BY t.REQUEST_TIME DESC  limit 0,1"
-    sql = "SELECT * FROM help_keyword limit 1,10"
-    A.mysql_execute(sql)
-    print A.mysql_getrows(sql)
+    # sql = "SELECT * FROM help_keyword limit 1,10"#查询
+    # sql1='''create table if not exists honey4 (
+    #         first_name char(20) primary key not null,
+    #         last_name char(10) ,
+    #         age int,
+    #         sex char(10),
+    #         income float)'''#创建数据表
+    # sql='''insert into honey3(first_name,last_name,age,sex,income) values ('%s', '%s', '%d', '%c', '%d' ) '''\
+    # %('7777c', 'M777an', 20, 'M', 2000)#插入可以多个直接传，也可以传指定的
+    # sql='''UPDATE honey3 SET age = age + 1
+    # WHERE sex = "%c"'''% ('M')#更新
+    sql='DROP TABLE IF EXISTS honey1'#删除表
 
-    print A.mysql_getstring(sql)
+    A.mysql_execute(sql)
+    # print A.mysql_getrows(sql)
+
+    # print A.mysql_getstring(sql)
     A.mysql_close()
 

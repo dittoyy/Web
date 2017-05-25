@@ -17,7 +17,7 @@ sys.setdefaultencoding('utf8')
 # 第三步获取最新测试报告
 # 第四步发送邮箱 （这一步不想执行的话，可以注释掉最后面那个函数就行）
 
-def add_case(case_path, rule):
+def add_case(case_path, rule='test*.py'):
     '''加载所有的测试用例'''
     testunit = unittest.TestSuite()
     # 定义discover方法的参数

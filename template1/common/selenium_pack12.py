@@ -62,7 +62,7 @@ class Seleniumpack1(object):
             WebDriverWait(self.driver, timeout, 1).until(EC.title_contains(t))
             # print 'yes,title is true:%s' % t
         except TimeoutException:
-            print "open %s title error" % url
+            print "timeout and open %s title error" % url
         except Exception as msg:
             print "Error:%s" % msg
 
@@ -80,15 +80,6 @@ class Seleniumpack1(object):
         '''定位一组元素'''
         elements = WebDriverWait(self.driver, timeout, 1).until(EC.presence_of_all_elements_located(locator))
         return elements
-
-    def drag_drop(self,oldone,newone):
-        '''drag_down操作，传两值'''
-        element = self.find_element(oldone)
-
-        target = self.find_element(newone)
-
-        ActionChains(self.driver).drag_and_drop(element, target).perform()
-
 
     def click(self, locator):
         '''
@@ -110,49 +101,6 @@ class Seleniumpack1(object):
         element = self.find_element(locator)
         element.clear()
         element.send_keys(text)
-    def send_files(self,locator,file):
-        '''
-        发送file，定位到元素清空后上传文件
-        Usage:
-        locator = ("id","xxx")
-        driver.send_keys(locator, text)
-        '''
-        element = self.find_element(locator)
-        element.click()
-        element.clear()
-        element.send_keys(file)
-    def checkbox_all(self,locator):
-        '''
-        全选checkboxes
-        Usage:
-        locator = ("id","xxx")
-        driver.checkbox_all(locator, text)
-        '''
-        checkboxes = self.find_elements(locator)
-        for checkbox in checkboxes:
-            checkbox.click()
-
-    def check_one(self,locator):
-        '''选中谁单个的'''
-        check = self.find_element(locator)
-
-        check.click()
-        '''
-        或者选even/odd的，运用数组各种pop()shift()
-        '''
-
-
-    # def jq_text():
-    #     '''jq获取同种元素的文字'''
-    #     get_text=for (var i in $('.menu_bt a')){console.log($('.menu_bt a')[i].text)}
-    #     self.js_execute(get_text)
-    # def jq_checked(locator,checked='checked'):
-    #     '''iq全选或者不选,默认全选'''
-    #     get_checked=for (var i in $('input')){$('input')[i].checked='checked'}#全选
-    #     self.js_execute(get_checked)
-    #     get_unchecked=for (var i in $('input')){$('input')[i].checked=''}#全不选
-    #     self.js_execute(get_unchecked)
-    # def
 
     def is_text_in_element(self, locator, text, timeout=10):
         '''
@@ -287,11 +235,6 @@ class Seleniumpack1(object):
         '''获取属性'''
         element = self.find_element(locator)
         return element.get_attribute(name)
-
-    def leth(self,locators):
-        lenth=len(self.find_elements(locators))
-        # print lenth
-        return lenth
 
     def js_execute(self, js):
         '''执行js'''

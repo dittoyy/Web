@@ -7,4 +7,6 @@ for a in caselist:
     s=a.split('.')[1] #选取后缀名为 py 的文件
     if s=='py':
         #此处执行 dos 命令并将结果保存到 log.txt
-        os.system('D:\\template\\template1\log\\%s 1>>log.txt 2>&1'%a)
+        os.system('python D:\\template\\template1\log\\%s 1>> log.txt 2>&1'%a)
+
+
