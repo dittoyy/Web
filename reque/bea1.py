@@ -192,11 +192,52 @@ print soup.find_all(hasclassnoid)
 # keyword参数，可以id，也可以属性，class不可以但是可以class_
 print soup.find_all(id='link2')
 print soup.find_all(href=re.compile('elsie'))#href包含了那几个字就可以了
-print soup.find_all(id='link1'，href=re.compile('elsie'))#可以多个属性
+print soup.find_all(id='link1',href=re.compile('elsie'))#可以多个属性
 
 # find_all() 方法的 attrs 参数定义一个字典参数来搜索包含特殊属性的tag
-print data_soup.find_all(attrs={"data-foo": "value"})#返回的是一个list
+data_soup = BeautifulSoup('<div data-foo="value">foo!</div>')
+# data_soup.find_all(data-foo="value")
+# SyntaxError: keyword can't be an expression
+# data_soup.find_all(attrs={"data-foo": "value"})#返回的是一个list
 # [<div data-foo="value">foo!</div>]
 
 
+# text参数搜索文档中的字符串内容，与name参数一样接受字符串正则列表true
+print soup.find_all(text=['Elsie','Lacie'])#可以查找多个list
+print soup.find_all(text=re.compile("Dormouse"))
+#limit参数
+print soup.find_all('a',limit=2)
 
+#tag的 find_all() 方法时,
+#Beautiful Soup会检索当前tag的所有子孙节点,
+#如果只想搜索tag的直接子节点,可以使用参数
+#recursive=False .
+print soup.find_all('title',recursive=False)
+
+# 直接返回结果，不是list
+# find find_all
+# find_parents() find_parent
+# find_next_siblings()  find_next_sibling()
+# find_previous_siblings()  find_previous_sibling()
+# find_all_next()  find_next()
+# find_all_previous() 和 find_previous()
+
+###############css选择器返回list
+# select 方法返回的结果都是列表形式，
+# 可以遍历形式输出，
+# 然后用 get_text() 方法来获取它的内容。
+soup.select('a')
+#tag，class，id,属性以及组合查找子标签查找均可
+#一个tag多个class属性
+# soup.select('tagname.class1.class2')[0]
+# soup.find('tagname', class_=['class1', 'class2'])
+
+soup = BeautifulSoup(html, 'lxml')
+print type(soup.select('title'))
+print soup.select('title')[0].get_text()
+
+for title in soup.select('title'):
+    print title.get_text()
+
+from bs4.diagnose import diagnose
+data = open(bad.html).read()diagnose(data)
