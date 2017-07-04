@@ -1,6 +1,8 @@
 #coding:utf-8
 
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 #加上headers模拟浏览器等访问
 ##verify=False以防ssl问题
 url='https://passport.cnblogs.com/user/signin'

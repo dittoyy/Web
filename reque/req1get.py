@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 print BeautifulSoup(r.text,'html.parser')
 # 为何不对'''
 print r.url
-# print r.json(par)#内置的json解码器,需要传两个参
+# print r.json()#内置的json解码器,需要传两个参
 print r.encoding#返回编码格式
 print r.headers#若不存在返回None
 print r.cookies#获取cookies

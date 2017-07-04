@@ -1,4 +1,5 @@
-
+#coding:utf-8
+import logging
 def main():
     logging.basicConfig(format='%(levelname)s:%(message)s',
             level=logging.WARN)
@@ -24,3 +25,4 @@ def main():
         logging.warn('结束')
         return
     sc.submitResume(jobids, cookies)
+main()

@@ -327,6 +327,23 @@ class Seleniumpack1(object):
         element = self.find_element(locator)
         Select(element).select_by_value(text)
 
+    # 截图功能
+    def get_screen(self):
+        '''截图'''
+        import time
+        nowTime = time.strftime("%Y_%m_%d_%H_%M_%S")
+        self.driver.get_screenshot_as_file('%s.jpg' % nowTime)
+    # 自动截图装饰器
+    def screen(self,func):
+        '''截图装饰器'''
+        def inner(*args, **kwargs):
+            try:
+                f = func(*args, **kwargs)
+                return f
+            except:
+                get_screen()  # 失败后截图
+        return inner
+
 if __name__ == '__main__':
 
     # if下面的代码都是测试调试的代码，自测内容
@@ -370,27 +387,48 @@ if __name__ == '__main__':
     # driver_n.js_execute(js)
 
     # if下面的代码都是测试调试的代码，自测内容
-    driver_n = Seleniumpack1()  # 返回类的实例：打开浏览器
+    @screen
+    def jietu():
+        driver_n = Seleniumpack1(browser())  # 返回类的实例：打开浏览器
 
-    driver_n.open("http://augtest.r-pac.com.hk/","r-pac")
-    login_name=('id','Username')
-    login_pass=('id','Password')
-    login_button=('id','btn_login')
-    e1=driver_n.find_element(login_name)
+        driver_n.open("http://augtest.r-pac.com.hk/","r-pac")
+        login_name=('id','Username')
+        login_pass=('id','Password')
+        login_button=('id','btn_login')
+        e1=driver_n.find_element(login_name)
 
-    driver_n.send_keys(login_name,"admin")
-    driver_n.send_keys(login_pass,"test1104")
-    # import pdb
-    # pdb.set_trace()
+        driver_n.send_keys(login_name,"admin")
+        driver_n.send_keys(login_pass,"test14")
+        driver_n.click(login_button)
+        account=("class name","user_text")
+        driver_n.text_in_element(account,"Administrator")
+    jietu()
 
-    driver_n.click(login_button)
 
-    account=("class name","user_text")
-    driver_n.text_in_element(account,"Administrator")
 
-    log_out=("css selector",'a[href="/logout"] img')
-    # log_out=('xpath','html/body/div[1]/table/tbody/tr/td/table/tbody/tr/td[3]/table/tbody/tr/td[4]/a/img')
-    driver_n.move_to_element(log_out)
-    driver_n.click(log_out)
+
+
+    # driver_n = Seleniumpack1(browser())  # 返回类的实例：打开浏览器
+
+    # driver_n.open("http://augtest.r-pac.com.hk/","r-pac")
+    # login_name=('id','Username')
+    # login_pass=('id','Password')
+    # login_button=('id','btn_login')
+    # e1=driver_n.find_element(login_name)
+
+    # driver_n.send_keys(login_name,"admin")
+    # driver_n.send_keys(login_pass,"test14")
+    # # import pdb
+    # # pdb.set_trace()
+
+    # driver_n.click(login_button)
+
+    # account=("class name","user_text")
+    # driver_n.text_in_element(account,"Administrator")
+
+    # log_out=("css selector",'a[href="/logout"] img')
+    # # log_out=('xpath','html/body/div[1]/table/tbody/tr/td/table/tbody/tr/td[3]/table/tbody/tr/td[4]/a/img')
+    # driver_n.move_to_element(log_out)
+    # driver_n.click(log_out)
 
 

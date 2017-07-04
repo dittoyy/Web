@@ -24,8 +24,9 @@ payload={
     'remember':True
     }
 #session登陆
-s=requests.session()
-
+s=requests.Session()
+# with requests.Session() as s:
+#     s.get('http://httpbin.org/get')
 r=s.post(url,json=payload,headers=headers,verify=False)
 # print r.json()
 #

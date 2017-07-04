@@ -50,6 +50,18 @@ class MysqlUtil():
             cur.close()
             self.conn.commit()          # sql无异常时提交
 
+    def mysql_executemany(self, sql,list):
+        '''执行sql语句'''
+        cur = self.conn.cursor()
+        try:
+            cur.executemany(sql,list)
+        except Exception as a:
+            self.conn.rollback()         # sql执行异常后回滚
+            print("执行SQL语句出现异常：%s"%a)
+        else:
+            cur.close()
+            self.conn.commit()          # sql无异常时提交
+
     def mysql_getrows(self, sql):
         ''' 返回查询结果'''
         cur = self.conn.cursor()
@@ -77,10 +89,6 @@ class MysqlUtil():
         except Exception as a:
             print("数据库关闭时异常：%s"%a)
 
-
-
-
-
 # MySQLdb.connect()     建立数据库连接
 # cur = conn.cursor()    #通过获取到的数据库连接conn下的cursor()方法来创建游标。
 # cur.execute()    #过游标cur 操作execute()方法可以写入纯sql语句。通过execute()方法中写如sql语句来对数据进行操作。
@@ -91,7 +99,7 @@ class MysqlUtil():
 
 if __name__ == "__main__":
     A = MysqlUtil()
-    # sql = "SELECT  *FROM notify_request t where TEMPLATE_ID LIKE '16091%' ORDER BY t.REQUEST_TIME DESC  limit 0,1"
+    # sql = "SELECT  *FROM notify_request t where TEMPLATE_ID LIKE '16091%' ORDER BY t.REQUEST_TIME DESC  limit 0,1"#limitorderby查询
     # sql = "SELECT * FROM help_keyword limit 1,10"#查询
     # sql1='''create table if not exists honey4 (
     #         first_name char(20) primary key not null,
@@ -101,11 +109,17 @@ if __name__ == "__main__":
     #         income float)'''#创建数据表
     # sql='''insert into honey3(first_name,last_name,age,sex,income) values ('%s', '%s', '%d', '%c', '%d' ) '''\
     # %('7777c', 'M777an', 20, 'M', 2000)#插入可以多个直接传，也可以传指定的
+
     # sql='''UPDATE honey3 SET age = age + 1
     # WHERE sex = "%c"'''% ('M')#更新
-    sql='DROP TABLE IF EXISTS honey1'#删除表
-
-    A.mysql_execute(sql)
+    sqli="insert into honey3(first_name,last_name,age,sex,income) values (%s, %s, %r, %r, %r ) "
+    list1=[
+        ('737c', 'M477an', 77, 'M', 21),
+        ('77447c', '377an', 77, 'M', 21),
+        ('7755657c', '1777an', 23, 'M',21),
+        ]
+    A.mysql_executemany(sqli,list1)
+    # A.mysql_execute(sql)
     # print A.mysql_getrows(sql)
 
     # print A.mysql_getstring(sql)

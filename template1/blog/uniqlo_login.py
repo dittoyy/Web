@@ -42,7 +42,7 @@ class LoginPage(Seleniumpack1):
         print s.get_cookies()
 
 if __name__ == '__main__':
-    s=browser()
+    s=browser('phantomjs')
     blog1=LoginPage(s)
     blog1.open(login_url,'r-pac & Uniqlo')
     # print s.get_cookies()
