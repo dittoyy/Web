@@ -1,4 +1,9 @@
-# coding:utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Date    : 2017-07-10 14:12:18
+# @Author  : ditto (969956574@qq.com)
+# @Link    : https://github.com/dittoyy
+# @Version : $Id$
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.select import Select

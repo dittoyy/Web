@@ -1,4 +1,9 @@
-# coding:utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Date    : 2017-07-10 14:12:18
+# @Author  : ditto (969956574@qq.com)
+# @Link    : https://github.com/dittoyy
+# @Version : $Id$
 import MySQLdb
 # import os
 # os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>auto run result ：</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="outline"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="detail"
+		}
+	}
+}
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "detail"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "outline"
+        }
+    }
+}
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1>auto run result ：</h1>
+<p class='attribute'><strong>Tester : </strong> QA</p>
+<p class='attribute'><strong>Start Time : </strong> 2017-07-10 10:13:05</p>
+<p class='attribute'><strong>Duration : </strong> 0:04:40.755000</p>
+<p class='attribute'><strong>Status : </strong> ALL 24 Pass 9 Error 15, Passing rate: 37.50%</p>
+
+<p class='description'>runner details：</p>
+</div>
+
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>Summary{ 37.50% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>Failed{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>Passed{ 9 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>ALL{ 24 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_class.Test</td>
+    <td class="text-center">3</td>
+    <td class="text-center">3</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',3)" class="detail" id='c1'>Detail</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>pass</button>
+    <div id='div_pt1_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>pass</button>
+    <div id='div_pt1_1' class="collapse in">
+    <pre>
+    
+pt1_1: 执行测试用例01
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>pass</button>
+    <div id='div_pt1_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_2'>pass</button>
+    <div id='div_pt1_2' class="collapse in">
+    <pre>
+    
+pt1_2: 执行测试用例02
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_3'>pass</button>
+    <div id='div_pt1_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_3'>pass</button>
+    <div id='div_pt1_3' class="collapse in">
+    <pre>
+    
+pt1_3: 执行测试用例03
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_class1.Test</td>
+    <td class="text-center">3</td>
+    <td class="text-center">3</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',3)" class="detail" id='c2'>Detail</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>pass</button>
+    <div id='div_pt2_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>pass</button>
+    <div id='div_pt2_1' class="collapse in">
+    <pre>
+    
+pt2_1: 执行测试用例01
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_2'>pass</button>
+    <div id='div_pt2_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_2'>pass</button>
+    <div id='div_pt2_2' class="collapse in">
+    <pre>
+    
+pt2_2: 执行测试用例02
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_3'>pass</button>
+    <div id='div_pt2_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_3'>pass</button>
+    <div id='div_pt2_3' class="collapse in">
+    <pre>
+    
+pt2_3: 执行测试用例03
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_dd1.test_ooooooooooo: 登录页面的case</td>
+    <td class="text-center">3</td>
+    <td class="text-center">3</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',3)" class="detail" id='c3'>Detail</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01_1: 登录成功按案例：输入正确账号密码</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>pass</button>
+    <div id='div_pt3_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>pass</button>
+    <div id='div_pt3_1' class="collapse in">
+    <pre>
+    
+pt3_1: start
+123456781 zhang True
+end
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01_2: 登录成功按案例：输入正确账号密码</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_2'>pass</button>
+    <div id='div_pt3_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_2'>pass</button>
+    <div id='div_pt3_2' class="collapse in">
+    <pre>
+    
+pt3_2: start
+123456 111 False
+end
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01_3: 登录成功按案例：输入正确账号密码</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_3'>pass</button>
+    <div id='div_pt3_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_3'>pass</button>
+    <div id='div_pt3_3' class="collapse in">
+    <pre>
+    
+pt3_3: start
+222 33 False
+end
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_log.Test</td>
+    <td class="text-center">2</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">2</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',2)" class="detail" id='c4'>Detail</a></td>
+</tr>
+
+<tr id='ft4_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_1'>error</button>
+    <div id='div_ft4_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_1'>error</button>
+    <div id='div_ft4_1' class="collapse in">
+    <pre>
+    
+ft4_1: No handlers could be found for logger "selenium.webdriver.remote.remote_connection"
+Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_log.py", line 14, in test_01
+    log.info("-------测试用例开始---------")
+  File "D:\template\template1\common\logger.py", line 44, in info
+    self.__console('info', message)
+  File "D:\template\template1\common\logger.py", line 15, in __console
+    fh = logging.FileHandler(self.logname, 'a')  # 追加模式
+  File "C:\Python27\lib\logging\__init__.py", line 913, in __init__
+    StreamHandler.__init__(self, self._open())
+  File "C:\Python27\lib\logging\__init__.py", line 943, in _open
+    stream = open(self.baseFilename, self.mode)
+IOError: [Errno 2] No such file or directory: 'D:\\template\\template1\\case\\login\\log\\2017_07_10__10_13_05.log'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_2'>error</button>
+    <div id='div_ft4_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_2'>error</button>
+    <div id='div_ft4_2' class="collapse in">
+    <pre>
+    
+ft4_2: No handlers could be found for logger "selenium.webdriver.remote.remote_connection"
+Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_log.py", line 25, in tearDown
+    log.info("-------测试用例结束----------")
+  File "D:\template\template1\common\logger.py", line 44, in info
+    self.__console('info', message)
+  File "D:\template\template1\common\logger.py", line 15, in __console
+    fh = logging.FileHandler(self.logname, 'a')  # 追加模式
+  File "C:\Python27\lib\logging\__init__.py", line 913, in __init__
+    StreamHandler.__init__(self, self._open())
+  File "C:\Python27\lib\logging\__init__.py", line 943, in _open
+    stream = open(self.baseFilename, self.mode)
+IOError: [Errno 2] No such file or directory: 'D:\\template\\template1\\case\\login\\log\\2017_07_10__10_13_05.log'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_login_test.Login_test: 登录页面的case</td>
+    <td class="text-center">3</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">3</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',3)" class="detail" id='c5'>Detail</a></td>
+</tr>
+
+<tr id='ft5_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_01_1: 登录成功按案例：输入正确账号密码</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_1'>error</button>
+    <div id='div_ft5_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_1'>error</button>
+    <div id='div_ft5_1' class="collapse in">
+    <pre>
+    
+ft5_1: {u'username': u'123456781', u'title': u'u', u'psw': u'zhang', u'expect': u'True'}
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\ddt.py", line 129, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\template\template1\case\login\test_login_test.py", line 44, in test_login_01
+    self.login_case(data["username"], data["psw"],data["expect"],data['title'])
+  File "D:\template\template1\case\login\test_login_test.py", line 25, in login_case
+    self.driver.input_username(username)
+  File "D:\template\template1\blog\blog_login_page.py", line 20, in input_username
+    self.send_keys(self.username_loc, username)
+  File "D:\template\template1\common\selenium_pack1.py", line 110, in send_keys
+    element = self.find_element(locator)
+  File "D:\template\template1\common\selenium_pack1.py", line 76, in find_element
+    element = WebDriverWait(self.driver, timeout, 1).until(EC.presence_of_element_located(locator))
+  File "C:\Python27\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+TimeoutException: Message: 
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///c:/users/ditto.he/appdata/local/temp/tmpo2xyqd/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+    at FirefoxDriver.prototype.findElement (file:///c:/users/ditto.he/appdata/local/temp/tmpo2xyqd/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10779)
+    at DelayedCommand.prototype.executeInternal_/h (file:///c:/users/ditto.he/appdata/local/temp/tmpo2xyqd/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at DelayedCommand.prototype.executeInternal_ (file:///c:/users/ditto.he/appdata/local/temp/tmpo2xyqd/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)
+    at DelayedCommand.prototype.execute/&lt; (file:///c:/users/ditto.he/appdata/local/temp/tmpo2xyqd/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_01_2: 登录成功按案例：输入正确账号密码</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_2'>error</button>
+    <div id='div_ft5_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_2'>error</button>
+    <div id='div_ft5_2' class="collapse in">
+    <pre>
+    
+ft5_2: {u'username': u'123456', u'title': u'y', u'psw': u'111', u'expect': u'False'}
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\ddt.py", line 129, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\template\template1\case\login\test_login_test.py", line 44, in test_login_01
+    self.login_case(data["username"], data["psw"],data["expect"],data['title'])
+  File "D:\template\template1\case\login\test_login_test.py", line 25, in login_case
+    self.driver.input_username(username)
+  File "D:\template\template1\blog\blog_login_page.py", line 20, in input_username
+    self.send_keys(self.username_loc, username)
+  File "D:\template\template1\common\selenium_pack1.py", line 110, in send_keys
+    element = self.find_element(locator)
+  File "D:\template\template1\common\selenium_pack1.py", line 76, in find_element
+    element = WebDriverWait(self.driver, timeout, 1).until(EC.presence_of_element_located(locator))
+  File "C:\Python27\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+TimeoutException: Message: 
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///c:/users/ditto.he/appdata/local/temp/tmpywondo/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+    at FirefoxDriver.prototype.findElement (file:///c:/users/ditto.he/appdata/local/temp/tmpywondo/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10779)
+    at DelayedCommand.prototype.executeInternal_/h (file:///c:/users/ditto.he/appdata/local/temp/tmpywondo/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at DelayedCommand.prototype.executeInternal_ (file:///c:/users/ditto.he/appdata/local/temp/tmpywondo/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)
+    at DelayedCommand.prototype.execute/&lt; (file:///c:/users/ditto.he/appdata/local/temp/tmpywondo/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_01_3: 登录成功按案例：输入正确账号密码</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_3'>error</button>
+    <div id='div_ft5_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_3'>error</button>
+    <div id='div_ft5_3' class="collapse in">
+    <pre>
+    
+ft5_3: {u'username': u'969956574@qq.com', u'title': u'969956574', u'psw': u'969956574@qq.com', u'expect': u'True'}
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\ddt.py", line 129, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\template\template1\case\login\test_login_test.py", line 44, in test_login_01
+    self.login_case(data["username"], data["psw"],data["expect"],data['title'])
+  File "D:\template\template1\case\login\test_login_test.py", line 25, in login_case
+    self.driver.input_username(username)
+  File "D:\template\template1\blog\blog_login_page.py", line 20, in input_username
+    self.send_keys(self.username_loc, username)
+  File "D:\template\template1\common\selenium_pack1.py", line 110, in send_keys
+    element = self.find_element(locator)
+  File "D:\template\template1\common\selenium_pack1.py", line 76, in find_element
+    element = WebDriverWait(self.driver, timeout, 1).until(EC.presence_of_element_located(locator))
+  File "C:\Python27\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+TimeoutException: Message: 
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///c:/users/ditto.he/appdata/local/temp/tmpydmosa/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+    at FirefoxDriver.prototype.findElement (file:///c:/users/ditto.he/appdata/local/temp/tmpydmosa/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10779)
+    at DelayedCommand.prototype.executeInternal_/h (file:///c:/users/ditto.he/appdata/local/temp/tmpydmosa/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at DelayedCommand.prototype.executeInternal_ (file:///c:/users/ditto.he/appdata/local/temp/tmpydmosa/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)
+    at DelayedCommand.prototype.execute/&lt; (file:///c:/users/ditto.he/appdata/local/temp/tmpydmosa/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_succe.Login_success</td>
+    <td class="text-center">10</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">10</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c6',10)" class="detail" id='c6'>Detail</a></td>
+</tr>
+
+<tr id='ft6_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test01: 进入我的主页,测试我关注的人</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_1'>error</button>
+    <div id='div_ft6_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_1'>error</button>
+    <div id='div_ft6_1' class="collapse in">
+    <pre>
+    
+ft6_1: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 30, in test01
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test02: 进入我的主页,测试我的粉丝</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_2'>error</button>
+    <div id='div_ft6_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_2'>error</button>
+    <div id='div_ft6_2' class="collapse in">
+    <pre>
+    
+ft6_2: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 48, in test02
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test03: 成功的上传头像图片</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_3'>error</button>
+    <div id='div_ft6_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_3'>error</button>
+    <div id='div_ft6_3' class="collapse in">
+    <pre>
+    
+ft6_3: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 66, in test03
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_4' class='none'>
+    <td class='errorCase'><div class='testcase'>test04: 上传头像图片点击取消</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_4'>error</button>
+    <div id='div_ft6_4' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_4'>error</button>
+    <div id='div_ft6_4' class="collapse in">
+    <pre>
+    
+ft6_4: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 87, in test04
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test05: 上传头像未上传点击取消</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_5'>error</button>
+    <div id='div_ft6_5' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_5'>error</button>
+    <div id='div_ft6_5' class="collapse in">
+    <pre>
+    
+ft6_5: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 108, in test05
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_6' class='none'>
+    <td class='errorCase'><div class='testcase'>test06: 进入我的闪存搜索内容不存在点击返回</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_6'>error</button>
+    <div id='div_ft6_6' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_6'>error</button>
+    <div id='div_ft6_6' class="collapse in">
+    <pre>
+    
+ft6_6: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 127, in test06
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_7' class='none'>
+    <td class='errorCase'><div class='testcase'>test07: 进入我的闪存搜索内容为空点击返回</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_7'>error</button>
+    <div id='div_ft6_7' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_7'>error</button>
+    <div id='div_ft6_7' class="collapse in">
+    <pre>
+    
+ft6_7: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 150, in test07
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_8' class='none'>
+    <td class='errorCase'><div class='testcase'>test08: 进入我的闪存导出闪存点击确认</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_8'>error</button>
+    <div id='div_ft6_8' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_8'>error</button>
+    <div id='div_ft6_8' class="collapse in">
+    <pre>
+    
+ft6_8: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 171, in test08
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_9' class='none'>
+    <td class='errorCase'><div class='testcase'>test09: 进入我的闪存导出闪存点击取消</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_9'>error</button>
+    <div id='div_ft6_9' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_9'>error</button>
+    <div id='div_ft6_9' class="collapse in">
+    <pre>
+    
+ft6_9: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 191, in test09
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_denglu: 测试前置条件登录成功</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_10'>error</button>
+    <div id='div_ft6_10' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_10'>error</button>
+    <div id='div_ft6_10' class="collapse in">
+    <pre>
+    
+ft6_10: Traceback (most recent call last):
+  File "D:\template\template1\case\login\test_succe.py", line 26, in test_denglu
+    self.denglu()
+  File "D:\template\template1\case\login\test_succe.py", line 17, in denglu
+    driver_login=Loginpage(self.driver)
+NameError: global name 'Loginpage' is not defined
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>Total</td>
+    <td>24</td>
+    <td>9</td>
+    <td>0</td>
+    <td>15</td>
+    <td>Passing rate: 37.50%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+
+</body>
+</html>
